@@ -1,30 +1,17 @@
+'use strict';
+
 module.exports = function(grunt) {
 
-  grunt.initConfig({
+    // load configuration
+    var config = {};
+    config.pkg = grunt.file.readJSON('package.json'),
+    config.watch = require('./gruntconfig/watchDefault.js');
+    grunt.initConfig(config);
 
-    // watch task configuration
-    watch: {
-      options: {
-        livereload: 35730,
-        cwd: 'src'
-      },
-      sass: {
-        files: ['sass/*.scss'],
-        tasks: ['sass'],
-      },
-      html: {
-        files: ['*.html']
-      },
-      js: {
-        files: ['js/*.js']
-      }
-    },
+    // load tasks
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
+    // register tasks
+    grunt.registerTask('default', ['watch']);
 
-  });
-
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('default', ['watch']);
-
-};
+  }

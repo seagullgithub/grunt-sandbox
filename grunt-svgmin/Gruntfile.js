@@ -1,9 +1,26 @@
+'use strict';
+
+module.exports = function(grunt) {
+
+  // load configuration
+  var config = {};
+  config.pkg = grunt.file.readJSON('package.json'),
+  config.svgmin = require('./gruntconfig/svgminDefault.js');
+  grunt.initConfig(config);
+
+  // load tasks
+  grunt.loadNpmTasks('grunt-svgmin');
+
+  // register tasks
+  grunt.registerTask('default', ['svgmin']);
+
+}
+
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
 
-      //svg min configuration
-    svgmin: {
 	options: {
             plugins: [
                 // {cleanupAttrs: xxx }, //cleanup attributes from newlines, trailing, and repeating spaces
@@ -61,12 +78,9 @@ module.exports = function(grunt) {
 	        'src/assets/svgo/test1.svgo.svg': 'src/assets/svg/test1.svg'
 	    }
 	}
-    }
 
   });
 
-  grunt.loadNpmTasks('grunt-svgmin');
 
-  grunt.registerTask('default', ['svgmin']);
 
 };

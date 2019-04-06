@@ -1,25 +1,16 @@
+'use strict';
+
 module.exports = function(grunt) {
 
-  grunt.initConfig({
+  // load configuration
+  var config = {};
+  config.sass = require('./gruntconfig/sassDefault.js');
+  grunt.initConfig(config);
 
-  sass: {
-    dist: {
-      options: {
-        style: 'expanded',
-        // sourcemap: 'none',
-        trace: true,
-        style: 'compressed' // nested, compact, compressed, expanded
-      },
-      files: {
-        'build/assets/css/style.css': 'src/sass/style.scss'
-      }
-    }
-  }
-
-  });
-
+  // load tasks
   grunt.loadNpmTasks('grunt-contrib-sass');
 
+  // register tasks
   grunt.registerTask('scss', ['sass']);
-
-};
+  
+}

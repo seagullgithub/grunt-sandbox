@@ -1,19 +1,17 @@
+'use strict';
+
 module.exports = function(grunt) {
 
-  grunt.initConfig({
+    // load configuration
+    var config = {};
+    config.pkg = grunt.file.readJSON('package.json'),
+    config.copy = require('./gruntconfig/copyDefault.js');
+    grunt.initConfig(config);
 
-      copy: {
-        main: {
-        expand: true,
-        src: 'src/*',
-        dest: 'dest/',
-        }
-      }
+    // load tasks
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-  });
+    // register tasks
+    grunt.registerTask('default', ['copy']);
 
-grunt.loadNpmTasks('grunt-contrib-copy');
-
-  grunt.registerTask('default', ['copy']);
-
-};
+  }
