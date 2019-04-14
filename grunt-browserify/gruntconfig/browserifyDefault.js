@@ -6,13 +6,13 @@ module.exports = {
 options: {
     debug: true,
   },
-  dev: {
+  'dev': {
     options: {
     },
     src: ['src/js/main.js'],
     dest: 'build/assets/js/bundle.js'
   },
-  production: {
+  'production': {
     options: {
       debug: false
     },
