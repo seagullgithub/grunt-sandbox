@@ -2,7 +2,17 @@
 var grunt = require('grunt')
 
 module.exports = {
-  
+
+  dist: {
+    files: [{
+      expand: true,
+      cwd: 'src/assets/svg',
+      src: '*',
+      dest: 'src/assets/svgo',
+      ext: '.svg',
+      extDot: 'first'
+    }]
+  },
   options: {
     plugins: [
       // {cleanupAttrs: xxx }, //cleanup attributes from newlines, trailing, and repeating spaces
@@ -53,11 +63,6 @@ module.exports = {
       // {removeScriptElement: xxx }, //remove <script> elements (disabled by default)
       // {reusePaths: xxx } //Find duplicated elements and replace them with links (disabled by default)
     ]
-  },
-  dist: {
-    files: {
-      'src/assets/svgo/test1.svgo.svg': 'src/assets/svg/test1.svg'
-    }
   }
 
 

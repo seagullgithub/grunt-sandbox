@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   // load configuration
   var config = {};
+  config.pkg = grunt.file.readJSON('package.json'),
   config.sass = require('./gruntconfig/sassDefault.js');
   grunt.initConfig(config);
 
@@ -12,5 +13,5 @@ module.exports = function(grunt) {
 
   // register tasks
   grunt.registerTask('scss', ['sass']);
-  
+
 }
